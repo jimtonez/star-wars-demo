@@ -36,7 +36,7 @@ export default function Characters () {
                     </div>
                     {renderCharacters()}
                 </div>
-                <div className="flex flex-col col-span-1 lg:col-span-2 items-center justify-center lg:mt-0">
+                <div className="flex flex-col col-span-1 lg:col-span-2 items-center justify-center">
                     {character ? (
                         <div className="flex flex-col lg:w-[450px] lg:h-screen items-center justify-start space-y-4">
                             <Build name={character} image={characterImage} path="" />

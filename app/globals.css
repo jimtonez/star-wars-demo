@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[url("../public/space.jpg")] bg-cover bg-center;
+  /* @apply bg-[url("../public/space.jpg")] bg-cover bg-center; */
+  @apply bg-[url("../public/space3.jpg")] bg-cover bg-center;
 }
 
 html {
