@@ -96,7 +96,7 @@ export default function Rebels() {
     <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-4 gap-4">
           <>
           {rebels.map((rebel, i) => (
-            <Character index={i} id={rebel.id} name={rebel.name} image={rebel.image} path={''} disabled={rebel.disabled} />
+            <Character key={i} index={i} id={rebel.id} name={rebel.name} image={rebel.image} path={''} disabled={rebel.disabled} />
           ))}
           </>
     </section>

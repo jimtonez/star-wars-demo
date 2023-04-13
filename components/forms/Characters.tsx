@@ -49,7 +49,7 @@ export default function Characters () {
                         <div className="flex flex-col lg:w-[450px] lg:h-[900px] items-center justify-start space-y-4">
                             <Build name={character} image={characterImage} path="" />
                             <Colors />
-                                <>
+                                <div className={`hidden lg:flex`}>
                                     {ship ? (
                                         <>
                                             <ShipDisplay name={ship} image={shipImage} path="" />
@@ -59,14 +59,14 @@ export default function Characters () {
                                         <div className="h-48 w-48 mt-4">
                                         </div>
                                     )}
-                                </>
-                            <div className="hidden lg:flex lg:flex-col lg:h-[102px] w-full items-center justify-end">
-                                <button className={`w-auto px-6 py-3 rounded-xl bg-inherit border border-yellow-600 hover:border-gray-700 transition shadow-lg shadow-black hover:bg-zinc-800/30 hover:opacity-80`} onClick={() => setCurrentStep("Ships")}>
+                                </div>
+                                <div className="hidden lg:flex lg:flex-col lg:h-[100px] w-full items-center justify-end">
+                                <button className={`flex w-1/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80`} onClick={() => setCurrentStep("Ships")}>
                                     <span className="font-semibold text-teal-400 text-lg">Next</span>
                                 </button>
                             </div>
                         </div>
-                    ): (
+                    ) : (
                         <>
                         </>
                     )}

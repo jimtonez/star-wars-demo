@@ -33,7 +33,7 @@ export default function Factions() {
         <div className='flex flex-col md:flex-row w-full h-auto justify-center space-y-4 md:space-y-0 md:space-x-4'>
           <>
           {menuItems.map((option, i) => (
-            <Faction id={option.id} name={option.name} alias={option.alias} image={option.image} path={option.path} />
+            <Faction key={i} id={option.id} name={option.name} alias={option.alias} image={option.image} path={option.path} />
           ))}
           </>
         </div>

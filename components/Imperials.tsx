@@ -90,7 +90,7 @@ export default function Imperials() {
     <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-4 gap-4">
           <>
           {imperials.map((imperial, i) => (
-            <Character index={i} id={imperial.id} name={imperial.name} image={imperial.image} path={''} disabled={imperial.disabled} />
+            <Character key={i} index={i} id={imperial.id} name={imperial.name} image={imperial.image} path={''} disabled={imperial.disabled} />
           ))}
           </>
     </section>

@@ -58,7 +58,7 @@ export default function Ships () {
                                         </div>
                                     )}
                                 </div>
-                                <div className="hidden lg:flex lg:flex-col lg:h-[102px] w-full items-center justify-end">
+                                <div className="hidden lg:flex lg:flex-col lg:h-[100px] w-full items-center justify-end">
                                 <button disabled={!ship} className={`${!ship ? 'hidden' : 'flex'} w-3/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80`} onClick={() => setCurrentStep("Characters")}>
                                     <span className="font-semibold text-teal-400 text-lg">Play</span>
                                 </button>
