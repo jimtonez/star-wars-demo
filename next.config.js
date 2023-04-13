@@ -5,6 +5,9 @@ const nextConfig = {
     outputStandalone: true,
     appDir: true
   },
+  images: {
+    domains: ["media.contentapi.ea.com", "lh3.googleusercontent.com"]
+  },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if

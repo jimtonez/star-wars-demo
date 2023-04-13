@@ -19,62 +19,74 @@ const rebels = [
   {
     id: 1,
     name: "Luke Skywalker",
-    image: luke
+    image: luke,
+    disabled: false
   },
   {
     id: 2,
     name: "Han Solo",
-    image: han
+    image: han,
+    disabled: false
   },
   {
     id: 3,
     name: "Princess Leia",
-    image: princess
+    image: princess,
+    disabled: false
   },
   {
     id: 4,
     name: "Chewbacca",
-    image: chewbacca
+    image: chewbacca,
+    disabled: false
   },
   {
     id: 5,
     name: "C3PO",
-    image: c3po
+    image: c3po,
+    disabled: false
   },
   {
     id: 5,
     name: "Ewok",
-    image: ewok
+    image: ewok,
+    disabled: false
   },
   {
     id: 9,
     name: "Red Five",
-    image: red
+    image: red,
+    disabled: false
   },
   {
     id: 10,
     name: "R2D2",
-    image: r2d2
+    image: r2d2,
+    disabled: false
   },
   {
     id: 11,
     name: "Obiwan Kenobi",
-    image: obi
+    image: obi,
+    disabled: false
   },
   {
     id: 12,
     name: "Yoda",
-    image: yoda
+    image: yoda,
+    disabled: false
   },
   {
     id: 13,
     name: "Admiral Ackbar",
-    image: admiral
+    image: admiral,
+    disabled: false
   },
   {
     id: 14,
     name: "Lando Calrissian",
-    image: lando
+    image: lando,
+    disabled: false
   }
 ]
 
@@ -84,7 +96,7 @@ export default function Rebels() {
     <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-4 gap-4">
           <>
           {rebels.map((rebel, i) => (
-            <Character index={i} id={rebel.id} name={rebel.name} image={rebel.image} path={''} />
+            <Character index={i} id={rebel.id} name={rebel.name} image={rebel.image} path={''} disabled={rebel.disabled} />
           ))}
           </>
     </section>

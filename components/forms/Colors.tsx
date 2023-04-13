@@ -58,7 +58,7 @@ export default function Colors () {
     return (
         <div className="grid grid-cols-8 lg:grid-cols-4 grid-rows-1 lg:grid-rows-2 gap-2 sm:gap-4 h-12 sm:h-16 md:h-20 lg:h-40 w-[425px] sm:w-[600px] md:w-[700px] lg:w-[350px]">
             {colors.map((color, i) => (
-                <div onClick={() => handleSelect(color.color)} key={i} className={`flex flex-row items-center justify-center border ${selectedColor === color.color ? 'border-gray-700' : 'border-yellow-600'} hover:bg-inherit hover:border-gray-700 hover:backdrop-blur-sm hover:bg-gray-800/20'} cursor-pointer shadow-b shadow-sm rounded-full hover:scale-[105%] ease-in-out duration-300 w-12 h-12 sm:h-16 sm:w-16 md:w-20 md:h-20`}>
+                <div onClick={() => handleSelect(color.color)} key={i} className={`flex flex-row items-center justify-center border shadow-lg shadow-black ${selectedColor === color.color ? 'border-gray-700' : 'border-yellow-600'} hover:bg-inherit hover:border-gray-700 hover:backdrop-blur-sm hover:bg-gray-800/20'} cursor-pointer shadow-b shadow-sm rounded-full hover:scale-[105%] ease-in-out duration-300 w-12 h-12 sm:h-16 sm:w-16 md:w-20 md:h-20`}>
                     <div className={`flex ${color.color} items-center justify-center w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full`}>
                     </div>
                 </div>

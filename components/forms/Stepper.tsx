@@ -5,6 +5,7 @@ import Factions from "./Factions"
 import Characters from "./Characters"
 import { formState } from '@/atoms/formAtom'
 import Colors from './Colors'
+import Ships from './Ships'
 
 function Stepper () {
 
