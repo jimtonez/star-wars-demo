@@ -1,8 +1,10 @@
 "use client"
 import { useRecoilState } from "recoil"
+import { ArrowLeftCircleIcon, PlayIcon } from "@heroicons/react/24/outline"
 import { factionState } from "@/atoms/factionAtom"
 import Fleet from "../Fleet"
 import Build from "../Build"
+import { useSession } from "next-auth/react"
 import { characterState } from "@/atoms/characterAtom"
 import { shipState } from "@/atoms/shipAtom"
 import { characterImageState } from "@/atoms/characterImageAtom"
@@ -10,6 +12,7 @@ import { shipImageState } from "@/atoms/shipImageAtom"
 import Colors from "./Colors"
 import { formState } from "@/atoms/formAtom"
 import ShipDisplay from "../ShipDisplay"
+import ShipIcon from '../ShipIcon'
 
 export default function Ships () {
     
@@ -19,6 +22,8 @@ export default function Ships () {
     const [characterImage, setCharacterImage] = useRecoilState(characterImageState)
     const [shipImage, setShipImage] = useRecoilState(shipImageState)
     const [currentStep, setCurrentStep] = useRecoilState(formState)
+
+    const { data: session } = useSession()
     
     const renderShips = () => {
         if (faction === "Rebels") {
@@ -30,6 +35,11 @@ export default function Ships () {
                 <Fleet />
             )
         }
+    }
+
+    const handleSubmit = () => {
+        // setCurrentStep("Characters")
+        
     }
 
     return (
@@ -45,7 +55,18 @@ export default function Ships () {
                 <div className="flex flex-col col-span-1 lg:col-span-2 items-center justify-center">
                     {character ? (
                         <div className="flex flex-col lg:w-[450px] lg:h-[900px] items-center justify-start space-y-4">
-                            <Build name={character} image={characterImage} path="" />
+                            <div className="flex relative w-full flex-row items-center justify-around mt-20 lg:mt-0">
+                                <button className={`flex lg:hidden w-auto items-center justify-center mb-12 px-2 py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Characters")}>
+                                   <ArrowLeftCircleIcon className="h-16 w-16 text-teal-400" />
+                                </button>
+                                <Build name={character} image={characterImage} path="" />
+                                <div className={`${ship ? 'flex'  : 'hidden'} lg:hidden absolute -top-12 right-20 sm:right-40 md:right-52`}>
+                                   <ShipIcon name={ship} image={shipImage} path="" />
+                                </div>
+                                <button disabled={!ship} className={`flex lg:hidden w-auto items-center justify-center mb-12 px-2 py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Characters")}>
+                                    <PlayIcon className="h-16 w-16 text-teal-400" />
+                                </button>
+                            </div>
                             <Colors />
                                 <div className={`hidden lg:flex`}>
                                     {ship ? (
@@ -58,8 +79,11 @@ export default function Ships () {
                                         </div>
                                     )}
                                 </div>
-                                <div className="hidden lg:flex lg:flex-col lg:h-[100px] w-full items-center justify-end">
-                                <button disabled={!ship} className={`${!ship ? 'hidden' : 'flex'} w-3/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80`} onClick={() => setCurrentStep("Characters")}>
+                                <div className="hidden lg:flex lg:flex-row lg:h-[150px] w-[400px] items-center justify-between">
+                                <button disabled={!ship} className={`flex w-1/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Characters")}>
+                                    <span className="font-semibold text-teal-400 text-lg">Back</span>
+                                </button>
+                                <button disabled={!ship} className={`${!ship ? 'hidden' : 'flex'} w-1/2 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={handleSubmit}>
                                     <span className="font-semibold text-teal-400 text-lg">Play</span>
                                 </button>
                             </div>

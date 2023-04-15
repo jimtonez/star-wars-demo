@@ -1,6 +1,7 @@
 "use client"
 import { useRecoilState } from "recoil"
 import { factionState } from "@/atoms/factionAtom"
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon } from "@heroicons/react/24/outline"
 import Rebels from "../Rebels"
 import Imperials from "../Imperials"
 import Build from "../Build"
@@ -11,6 +12,7 @@ import { shipImageState } from "@/atoms/shipImageAtom"
 import Colors from "./Colors"
 import { formState } from "@/atoms/formAtom"
 import ShipDisplay from "../ShipDisplay"
+import ShipIcon from "../ShipIcon"
 
 export default function Characters () {
     
@@ -47,8 +49,19 @@ export default function Characters () {
                 <div className="flex flex-col col-span-1 lg:col-span-2 items-center justify-center">
                     {character ? (
                         <div className="flex flex-col lg:w-[450px] lg:h-[900px] items-center justify-start space-y-4">
-                            <Build name={character} image={characterImage} path="" />
-                            <Colors />
+                            <div className="flex relative w-full flex-row items-center justify-around mt-20 lg:mt-0">
+                                <button className={`flex lg:hidden w-auto items-center justify-center mb-12 px-2 py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Factions")}>
+                                   <ArrowLeftCircleIcon className="h-16 w-16 text-teal-400" />
+                                </button>
+                                <Build name={character} image={characterImage} path="" />
+                                <div className={`${ship ? 'flex'  : 'hidden'} lg:hidden absolute -top-12 right-20 sm:right-40 md:right-52`}>
+                                   <ShipIcon name={ship} image={shipImage} path="" />
+                                </div>
+                                <button disabled={!character} className={`flex lg:hidden w-auto items-center justify-center mb-12 px-2 py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Ships")}>
+                                    <ArrowRightCircleIcon className="h-16 w-16 text-teal-400" />
+                                </button>
+                            </div>
+                                <Colors />
                                 <div className={`hidden lg:flex`}>
                                     {ship ? (
                                         <>
@@ -60,8 +73,11 @@ export default function Characters () {
                                         </div>
                                     )}
                                 </div>
-                                <div className="hidden lg:flex lg:flex-col lg:h-[100px] w-full items-center justify-end">
-                                <button className={`flex w-1/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80`} onClick={() => setCurrentStep("Ships")}>
+                                <div className="hidden lg:flex lg:flex-row lg:h-[150px] w-full items-center justify-around">
+                                <button className={`flex w-1/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Factions")}>
+                                    <span className="font-semibold text-teal-400 text-lg">Back</span>
+                                </button>
+                                <button className={`flex w-1/4 items-center justify-center px-6 py-3 rounded-xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Ships")}>
                                     <span className="font-semibold text-teal-400 text-lg">Next</span>
                                 </button>
                             </div>
