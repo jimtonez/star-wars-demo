@@ -38,7 +38,7 @@ export default function Characters () {
 
     return (
         <>
-        <div className="grid grid-cols-1 lg:grid-cols-4 max-w-7xl">   
+        <div className="grid grid-cols-1 lg:grid-cols-4 max-w-7xl h-full">   
             <div className="flex items-center justify-center col-span-1 lg:col-span-4 flex-col-reverse lg:flex-row">
                 <div className={`flex col-span-1 lg:col-span-2 flex-col items-center justify-center`}>
                     <div className='flex items-center justify-center'>
@@ -48,17 +48,17 @@ export default function Characters () {
                 </div>
                 <div className="flex flex-col col-span-1 lg:col-span-2 items-center justify-center">
                     {character ? (
-                        <div className="flex flex-col lg:w-[450px] lg:h-[900px] items-center justify-start space-y-4">
-                            <div className="flex relative w-full flex-row items-center justify-around mt-20 lg:mt-0">
+                        <div className="flex flex-col lg:w-[450px] lg:h-[900px] items-center justify-start space-y-4 mt-10 lg:mt-0">
+                            <div className="flex relative w-full flex-row items-center justify-around">
                                 <button className={`flex lg:hidden w-auto items-center justify-center mb-12 px-2 py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Factions")}>
-                                   <ArrowLeftCircleIcon className="h-16 w-16 text-teal-400" />
+                                   <ArrowLeftCircleIcon className="h-16 w-16 text-teal-400 p-1" />
                                 </button>
                                 <Build name={character} image={characterImage} path="" />
                                 <div className={`${ship ? 'flex'  : 'hidden'} lg:hidden absolute -top-12 right-20 sm:right-40 md:right-52`}>
                                    <ShipIcon name={ship} image={shipImage} path="" />
                                 </div>
                                 <button disabled={!character} className={`flex lg:hidden w-auto items-center justify-center mb-12 px-2 py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Ships")}>
-                                    <ArrowRightCircleIcon className="h-16 w-16 text-teal-400" />
+                                    <ArrowRightCircleIcon className="h-16 w-16 text-teal-400 p-1" />
                                 </button>
                             </div>
                                 <Colors />

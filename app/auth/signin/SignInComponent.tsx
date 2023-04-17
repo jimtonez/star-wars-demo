@@ -31,12 +31,16 @@ function SignInComponent({ providers }: Props) {
         <div role="hidden" className="mt-12 border-t border-gray-700">
             <span className="block w-max mx-auto -mt-3 px-4 text-center text-teal-400 border border-teal-400 bg-zinc-900 rounded-full">Sign in with</span>
         </div>
-        <div className="mt-12 grid grid-cols-1 space-y-4">
+        <div className="mt-12 grid grid-cols-1 space-y-4 mb-12">
           {Object.values(providers!).map((provider) => (
-            <button key={provider.id} className="py-3 px-6 bg-inherit border border-yellow-600 hover:border-gray-700 hover:bg-zinc-900/30 shadow-lg shadow-black rounded-lg" onClick={() => signIn(provider.id, { callbackUrl: "/dashboard"})}>
-              <div className="flex gap-4 items-center justify-center">
-                {renderIcon(provider.name)}
-                <span className="block w-max font-medium tracking-wide text-sm text-white">{provider.name}</span>
+            <button key={provider.id} className="py-3 px-6 w-full bg-inherit border border-yellow-600 hover:border-gray-700 hover:bg-zinc-900/30 shadow-lg shadow-black rounded-lg" onClick={() => signIn(provider.id, { callbackUrl: "/dashboard"})}>
+              <div className="flex w-full items-center justify-center space-x-4">
+                <div className="flex w-1/4 items-center justify-center">
+                  {renderIcon(provider.name)}
+                </div>
+                <div className="flex w-3/4 items-center justify-start">
+                <span className="font-medium text-md text-white">{provider.name}</span>
+                </div>
               </div>
             </button>
           ))}
