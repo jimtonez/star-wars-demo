@@ -10,14 +10,14 @@ const menuItems = [
     id: 1,
     name: "Rebel Alliance",
     alias: "Rebels",
-    image: '/rebels.png',
+    image: rebels,
     path: "/dashboard"
   },
   {
     id: 2,
     name: "Galactic Empire",
     alias: "Imperials",
-    image: '/empire.png',
+    image: empire,
     path: "/dashboard"
   }
 ]
