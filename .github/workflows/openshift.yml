@@ -52,7 +52,7 @@ env:
   IMAGE_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
 
   # RedHat Registry credentials for running podman
-  RH_REGISTRY_USER: '11009103|svc.tme.registry'
+  RH_REGISTRY_USER: '11009103|svc.swd.registry'
   RH_REGISTRY_TOKEN: ${{ secrets.RH_REGISTRY_TOKEN }}
   RH_REGISTRY_URL: registry.redhat.io
 
@@ -131,6 +131,9 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
+          envkey_AZURE_AD_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+          envkey_AZURE_AD_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+          envkey_AZURE_AD_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
           envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           envkey_NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
