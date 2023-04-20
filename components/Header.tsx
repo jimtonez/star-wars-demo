@@ -22,7 +22,7 @@ const Header = ( navbar: Navbar) => {
         <div className={`flex bg-inherit items-center justify-between h-22 w-screen max-w-7xl mx-1 sticky top-0 z-10`}>
             <div className="flex p-4 xl:py-4 xl:px-0">
                 <button onClick={handleProducts} className={`${navbar.navbarOpen ? 'hidden' : 'flex'} items-center justify-center w-24 h-14 rounded-full hover:bg-zinc-900 bg-zinc-900/30 shadow-lg shadow-black cursor-pointer`}>
-                    <Image alt="" src={redhat} height={40} width={40}  />
+                    <Image priority alt="" src={redhat} height={40} width={40}  />
                 </button>
             </div>
             <div className="flex p-4 xl:py-4 xl:px-0">
