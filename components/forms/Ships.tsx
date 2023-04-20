@@ -54,8 +54,8 @@ export default function Ships () {
                 </div>
                 <div className="flex flex-col col-span-1 lg:col-span-2 items-center justify-center">
                     {character ? (
-                        <div className="flex flex-col w-[450px] lg:h-[900px] items-center justify-start space-y-4 mt-10 lg:mt-0">
-                            <div className="flex relative w-full flex-row items-center justify-around px-8">
+                        <div className="flex flex-col w-screen sm:w-[450px] lg:h-[900px] items-center justify-start space-y-4 mt-4 lg:mt-0">
+                            <div className="flex relative w-full flex-row items-center justify-around px-4 md:px-0">
                                 <button className={`flex lg:hidden w-auto items-center justify-center mb-12 sm:px-2 sm:py-2 rounded-3xl bg-inherit border border-yellow-600 shadow-lg shadow-black hover:border-gray-700 transition hover:bg-zinc-800/30 hover:opacity-80 hover:scale-[102%]`} onClick={() => setCurrentStep("Characters")}>
                                    <ArrowLeftCircleIcon className="h-16 w-16 text-teal-400 p-1" />
                                 </button>
