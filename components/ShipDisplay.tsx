@@ -20,7 +20,7 @@ const ShipDisplay = ( char: Display ) => {
         <div className={`col-span-1 aspect-w-2 aspect-h-2 cursor-pointer shadow-b shadow-sm ease-in-out duration-300`}>
             <div className="flex relative flex-col items-center justify-center">
                 <div className='flex h-48 w-48 items-center justify-center mt-4 border border-gray-700 rounded-full shadow-lg shadow-black'>
-                    <Image alt="" className={`h-[100%] w-[100%] rounded-full`} src={char.image} width={500} height={500} />
+                    <Image priority alt="" className={`h-[100%] w-[100%] rounded-full`} src={char.image} width={500} height={500} />
                 </div>
             </div>
         </div>
