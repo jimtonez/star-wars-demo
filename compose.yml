@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  app:
+    image: star-wars-demo
+    build:
+      context: .
+      dockerfile: Containerfile.dev
+    ports: 
+      - 3000:3000

@@ -1,5 +1,7 @@
 "use client"
 import { Inter } from 'next/font/google'
+import rebels from '@/public/rebels.png'
+import empire from '@/public/empire.png'
 import Faction from '@/components/Faction'
 
 const inter = Inter({ subsets: ['latin'] })
