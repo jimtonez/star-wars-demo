@@ -12,7 +12,7 @@ interface Faction {
     id: number,
     name: string,
     alias: string,
-    image: StaticImageData,
+    image: string,
     path: string
 }
 
@@ -38,7 +38,7 @@ const Faction = ( faction: Faction ) => {
                 </div>
             </div>
             <div className='flex w-full h-auto items-center justify-center p-4 sm:p-8 md:p-4 lg:p-8'>
-                <Image priority className='h-[90%] w-[90%] rounded-b-xl' alt="" src={faction.image} />
+                <Image priority className='h-[90%] w-[90%] object-cover rounded-b-xl' alt="" src={faction.image} width={500} height={500} />
             </div>
         </div>
         </div>
