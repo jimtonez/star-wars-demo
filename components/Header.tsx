@@ -1,4 +1,4 @@
-import redhat from '../public/Red_Hat_logo.png'
+import redhat from '@/public/Red_Hat_logo.png'
 import Image from 'next/image'
 
 interface Navbar {
