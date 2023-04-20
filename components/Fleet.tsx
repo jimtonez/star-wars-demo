@@ -89,7 +89,7 @@ const fleet = [
 export default function Fleet() {
 
   return (
-    <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-4 gap-4">
+    <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
           <>
           {fleet.map((imperial, i) => (
             <Ship key={i} index={i} id={imperial.id} name={imperial.name} image={imperial.image} path={''} disabled={imperial.disabled} />
