@@ -28,7 +28,7 @@ export default function Factions() {
     <main className="flex h-full flex-col items-center justify-start p-4">
       <div className="flex flex-col w-full max-w-7xl items-center justify-center font-mono space-y-4 md:space-y-8">
         <div className='flex w-full h-auto items-center justify-center'>
-          <h1 className='text-teal-400 text-3xl sm:text-4xl md:text-5xl'>Choose your side...</h1>
+          <h1 className='text-teal-400 text-2xl sm:text-4xl md:text-5xl'>Choose your side...</h1>
         </div>
         <div className='flex flex-col md:flex-row w-full h-auto justify-center space-y-4 md:space-y-0 md:space-x-4'>
           <>
