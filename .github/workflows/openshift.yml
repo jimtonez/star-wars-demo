@@ -34,7 +34,7 @@ env:
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
   OPENSHIFT_NAMESPACE: "star-wars-demo"
-  OPENSHIFT_CLUSTER: "cluster-82dzn.82dzn.sandbox852.opentlc.com"
+  OPENSHIFT_CLUSTER: "cluster-ndwfp.ndwfp.sandbox844.opentlc.com"
 
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
   APP_NAME: "star-wars-demo-dev"
