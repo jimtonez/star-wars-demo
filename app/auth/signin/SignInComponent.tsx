@@ -17,7 +17,7 @@ function SignInComponent({ providers }: Props) {
         )
       } else {
         return (
-          <Image alt="" src={azure} width={22} height={22} />
+          <Image priority alt="" src={azure} width={22} height={22} />
         )
       }
     }
