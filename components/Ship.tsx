@@ -1,7 +1,5 @@
 "use client"
 import Image from "next/image"
-import Link from "next/link"
-import { StaticImageData } from "next/image"
 import useHover from "@/hooks/useHover"
 import { useRecoilState } from "recoil"
 import { shipState } from "@/atoms/shipAtom"
