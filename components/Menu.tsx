@@ -24,14 +24,10 @@ const menuItems = [
 
 const Menu = ( navbar: Navbar) => {
 
-    const handleNavbar = () => {
-        navbar.setNavbarOpen((navbar.navbarOpen));
-    }
-
     useEffect(() => {
         const closeNavbar = () => {
             if(window.innerWidth > 1024) {
-                handleNavbar()
+                navbar.setNavbarOpen((navbar.navbarOpen));
             }
         };
         window.addEventListener('resize', closeNavbar);
