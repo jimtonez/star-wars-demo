@@ -1,0 +1,23 @@
+FROM registry.access.redhat.com/ubi9/nodejs-18:latest
+
+USER root
+
+RUN npm install --global yarn
+
+WORKDIR /app
+
+COPY package.json ./
+RUN yarn install
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN groupadd --system --gid 1001 nodejs
+RUN useradd -G nodejs nextjs
+
+COPY --chown=nextjs:nodejs . .
+
+USER nextjs
+
+COPY .env.local ./.env.local
+
+CMD ["yarn", "dev"]

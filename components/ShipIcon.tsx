@@ -1,8 +1,5 @@
 "use client"
 import Image from "next/image"
-import Link from "next/link"
-import { StaticImageData } from "next/image"
-import useHover from "@/hooks/useHover"
 import { useRecoilState } from "recoil"
 import { colorState } from "@/atoms/colorAtom"
 
@@ -20,7 +17,7 @@ const ShipIcon = ( char: Icon ) => {
         <div className={`col-span-1 aspect-w-2 aspect-h-2 cursor-pointer shadow-b shadow-sm ease-in-out duration-300`}>
             <div className="flex relative flex-col items-center justify-center">
                 <div className='flex h-24 w-24 items-center justify-center mt-4 border border-gray-700 rounded-full shadow-lg shadow-black'>
-                    <Image alt="" className={`h-[100%] w-[100%] rounded-full`} src={char.image} width={500} height={500} />
+                    <Image priority alt="" className={`h-[100%] w-[100%] rounded-full`} src={char.image} width={500} height={500} />
                 </div>
             </div>
         </div>

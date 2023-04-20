@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
 import Character from '@/components/Character'
-import princess from '../public/princess-leia.png'
+import princess from '@/public/princess-leia.png'
 import han from '@/public/han-solo.png'
 import ewok from '@/public/ewok.png'
 import luke from '@/public/luke-skywalker.png'
