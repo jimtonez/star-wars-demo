@@ -1,13 +1,13 @@
 import Character from '@/components/Character'
-import boba from '../public/boba-fett.png'
-import vader from '../public/darth-vader.png'
-import storm from '../public/stormtrooper.png'
-import emperor from '../public/emperor-palpatine.png'
-import greedo from '../public/greedo.png'
-import jabba from '../public/jabba-the-hutt.png'
-import tusken from '../public/tusken-raider.png'
-import jawa from '../public/jawa.png'
-import empire from '../public/empire.png'
+import boba from '@/public/boba-fett.png'
+import vader from '@/public/darth-vader.png'
+import storm from '@/public/stormtrooper.png'
+import emperor from '@/public/emperor-palpatine.png'
+import greedo from '@/public/greedo.png'
+import jabba from '@/public/jabba-the-hutt.png'
+import tusken from '@/public/tusken-raider.png'
+import jawa from '@/public/jawa.png'
+import empire from '@/public/empire.png'
 
 const imperials = [
   {
