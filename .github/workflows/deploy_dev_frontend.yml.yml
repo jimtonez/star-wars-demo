@@ -24,7 +24,7 @@
 
 # 👋 Visit our GitHub organization at https://github.com/redhat-actions/ to see our actions and provide feedback.
 
-name: OpenShift
+name: deploy-dev-frontend
 
 env:
   # 🖊️ EDIT your repository secrets to log into your OpenShift cluster and set up the context.
@@ -33,11 +33,11 @@ env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
-  OPENSHIFT_NAMESPACE: "star-wars-demo"
-  OPENSHIFT_CLUSTER: "cluster-ndwfp.ndwfp.sandbox844.opentlc.com"
+  OPENSHIFT_NAMESPACE: "star-wars-demo-dev"
+  OPENSHIFT_CLUSTER: "cluster-djdqh.djdqh.sandbox1757.opentlc.com"
 
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
-  APP_NAME: "star-wars-demo-dev"
+  APP_NAME: "star-wars-demo"
   REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-dev:latest"
 
   # 🖊️ EDIT with the port your application should be accessible on.
@@ -61,12 +61,12 @@ env:
 
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-  push:
+  pull_request:
     # Edit to the branch(es) you want to build and deploy on each push.
     branches: ["dev"]
 
 jobs:
-  openshift-ci-cd:
+  deploy:
     name: Build and deploy to OpenShift
     # ubuntu-20.04 can also be used.
     runs-on: ubuntu-20.04
@@ -127,53 +127,6 @@ jobs:
         if: env.IMAGE_TAGS == ''
         run: |
           echo "IMAGE_TAGS=latest ${GITHUB_SHA::12}" | tee -a $GITHUB_ENV
-
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_AZURE_AD_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
-          envkey_AZURE_AD_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
-          envkey_AZURE_AD_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
-          envkey_GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          envkey_NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          envkey_NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          directory: .
-          file_name: .env.local
-
-      - name: Log in to Red Hat Regsitry
-        uses: redhat-actions/podman-login@v1
-        with:
-          username: ${{ env.RH_REGISTRY_USER }}
-          password: ${{ env.RH_REGISTRY_TOKEN }}
-          registry: ${{ env.RH_REGISTRY_URL }}
-
-      # https://github.com/redhat-actions/buildah-build#readme
-      - name: Build from Dockerfile
-        id: build-image
-        uses: redhat-actions/buildah-build@v2
-        with:
-          image: ${{ env.APP_NAME }}
-          tags: ${{ env.IMAGE_TAGS }}
-
-          # If you don't have a Dockerfile/Containerfile, refer to https://github.com/redhat-actions/buildah-build#scratch-build-inputs
-          # Or, perform a source-to-image build using https://github.com/redhat-actions/s2i-build
-          # Otherwise, point this to your Dockerfile/Containerfile relative to the repository root.
-          dockerfiles: |
-            ./Containerfile.dev
-
-      # https://github.com/redhat-actions/push-to-registry#readme
-      - name: Push to registry
-        id: push-image
-        uses: redhat-actions/push-to-registry@v2
-        with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
-          registry: ${{ env.IMAGE_REGISTRY }}
-          username: ${{ env.IMAGE_REGISTRY_USER }}
-          password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
-
-      # The path the image was pushed to is now stored in ${{ steps.push-image.outputs.registry-path }}
 
       - name: Install oc
         uses: redhat-actions/openshift-tools-installer@v1

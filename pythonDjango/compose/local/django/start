@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+python manage.py makemigrations pythonDjango --settings=pythonDjango.settings.local
+python manage.py migrate --settings=pythonDjango.settings.local
+python manage.py createsuperuser --settings=pythonDjango.settings.local --email "timjones@redhat.com" --username "svcdjango" --noinput
+exec python manage.py runserver --settings=pythonDjango.settings.local 0.0.0.0:8000

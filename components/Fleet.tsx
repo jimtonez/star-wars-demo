@@ -1,15 +1,4 @@
 import Ship from '@/components/Ship'
-import boba from '../public/boba-fett.png'
-import xwing from '../public/xwing.png'
-import falcon from '../public/falcon.png'
-import ywing from '../public/ywing.webp'
-import cr90 from '../public/cr90.webp'
-import awing from '../public/awing.webp'
-import bwing from '../public/bwing.webp'
-import mc80 from '../public/mc80.webp'
-import gr75 from '../public/gr75.png'
-import nebulon from '../public/nebulon.png'
-import empire from '../public/empire.png'
 
 const fleet = [
   {
@@ -89,7 +78,7 @@ const fleet = [
 export default function Fleet() {
 
   return (
-    <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
+    <section className="grid grid-cols-3 md:grid-cols-4 grid-rows-3 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
           <>
           {fleet.map((imperial, i) => (
             <Ship key={i} index={i} id={imperial.id} name={imperial.name} image={imperial.image} path={''} disabled={imperial.disabled} />

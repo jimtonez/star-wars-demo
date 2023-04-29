@@ -2,6 +2,8 @@ import './globals.css'
 import { getServerSession } from "next-auth/next"
 import AuthContext from './AuthContext'
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import AppHead from './AppHead';
+
 
 export default async function RootLayout({
   children
@@ -17,7 +19,7 @@ export default async function RootLayout({
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
+      <AppHead />
       <body>
         <AuthContext session={session}>
             {children}
