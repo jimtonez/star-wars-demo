@@ -98,7 +98,7 @@ export default function Instructions () {
         <>
         <div className="flex flex-col w-full max-w-5xl ease-in-out duration-300 items-center justify-start min-h-screen space-y-4 mt-10 mb-10 p-2">
             {steps.map((step, i) => (
-                <Step index={i} name={step.name} enabled={step.enabled} completed={step.completed} tasks={[...step.tasks]} />
+                <Step key={i} index={i} name={step.name} enabled={step.enabled} completed={step.completed} tasks={[...step.tasks]} />
             ))}
         </div>
         </>

@@ -37,7 +37,7 @@ export default function Home() {
     } else {
         router.push('/auth/signin')
     }
-  },[])
+  },[session])
 
   return (
    

@@ -39,7 +39,7 @@ export default function Endor () {
         } else {
             router.push('/auth/signin')
         }
-    },[])
+    },[session])
 
     return (
         <>

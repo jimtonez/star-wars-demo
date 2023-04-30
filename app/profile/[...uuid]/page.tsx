@@ -38,7 +38,7 @@ export default function Profile () {
         } else {
             router.push('/auth/signin')
         }
-    },[])
+    },[session])
 
     return (
         <>

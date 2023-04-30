@@ -44,7 +44,7 @@ export default function Missions () {
         </div>
         <div className="grid gird-cols-1 lg:grid-cols-2 grid-rows-2 gap-4 max-w-5xl p-4 w-full h-full z-10 mb-10">
             {missions.map((mission, i) => (
-                <Mission name={mission.name} image={mission.image} enabled={mission.enabled} />
+                <Mission key={i} name={mission.name} image={mission.image} enabled={mission.enabled} />
             ))}
         </div>
         </>

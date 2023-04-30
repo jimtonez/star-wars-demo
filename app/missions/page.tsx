@@ -19,24 +19,11 @@ export default function Home() {
 
   useEffect(() => {
     if (session) {
-        // const getUser = async () => {
-        //     const res = await fetch(`/api/users`, {
-        //         method: "POST",
-        //         cache: 'no-store',
-        //         body: email
-        //     });
-        //     const dbuser = await res.json();
-        //     if (dbuser.user_email == email) {
-        //         router.push(`/profile/${dbuser.user_id}`)
-        //     } else {
-        //         setRegister(true)
-        //     }
-        // }
-        // getUser()
+
     } else {
         router.push('/auth/signin')
     }
-  },[])
+  },[session])
 
   return (
    
