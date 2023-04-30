@@ -64,11 +64,10 @@ on:
   pull_request:
     # Edit to the branch(es) you want to build and deploy on each push.
     branches: ["dev"]
-    paths: ['pythonDjango/**']
 
 jobs:
   deploy:
-    name: Build and deploy to OpenShift
+    name: Deploy Backend
     # ubuntu-20.04 can also be used.
     runs-on: ubuntu-20.04
     environment: development
