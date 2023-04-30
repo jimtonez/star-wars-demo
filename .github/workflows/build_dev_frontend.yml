@@ -139,6 +139,8 @@ jobs:
           envkey_GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           envkey_NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           envkey_NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          envkey_DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          envkey_DJANGO_API_URL: ${{ secrets.DJANGO_API_URL }}
           directory: .
           file_name: .env.local
 
