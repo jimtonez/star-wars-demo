@@ -40,14 +40,17 @@ env:
   DJANGO_APP_NAME: "star-wars-demo-backend"
   DJANGO_REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-backend:latest"
 
-  POSTGRES_APP_NAME: "postgres"
-  POSTGRES_REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-postgres:latest"
-
   # 🖊️ EDIT with the port your application should be accessible on.
   # If the container image exposes *exactly one* port, this can be left blank.
   # Refer to the 'port' input of https://github.com/redhat-actions/oc-new-app
   DJANGO_APP_PORT: "5000"
-  POSTGRES_APP_PORT: "5432"
+  
+  POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+  POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+  POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+  POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  POSTGRES_REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-postgres:latest"
 
   # 🖊️ EDIT to change the image registry settings.
   # Registries such as GHCR, Quay.io, and Docker Hub are supported.
@@ -158,6 +161,17 @@ jobs:
           oc create namespace ${{ env.OPENSHIFT_NAMESPACE }}
         if: steps.get-namespace.outcome != 'success'
 
+      - name: Get postgres service
+        id: get-postgres-service
+        run: |
+          oc get service postgres
+
+      # - name: Get postgres service
+      #   id: get-postgres-service
+      #   run: |
+      #     oc new-app postgres POSTGRES_DB=${{ env.POSTGRES_DB }} POSTGRES_PORT=${{ env.POSTGRES_PORT }} POSTGRES_HOST=${{ env.POSTGRES_HOST }} POSTGRES_USER=${{ env.POSTGRES_USER }} POSTGRES_PASSWORD=${{ env.POSTGRES_PASSWORD }}
+      #   if: steps.get-postgres-service.outcome != 'success'
+
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
       # https://github.com/redhat-actions/oc-new-app#readme
       - name: Create and expose django
@@ -168,25 +182,6 @@ jobs:
           image: ${{ env.DJANGO_REGISTRY_PATH }}
           namespace: ${{ env.OPENSHIFT_NAMESPACE }}
           port: ${{ env.DJANGO_APP_PORT }}
-          registry_hostname: ghcr.io
-          registry_username: ${{ env.IMAGE_REGISTRY_USER }}
-          registry_password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
-
-      # - name: Add secure route
-      #   run: |
-      #     oc delete route ${{ env.APP_NAME }}
-      #     oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }}
-
-      # This step should create a deployment, service, and route to run your app and expose it to the internet.
-      # https://github.com/redhat-actions/oc-new-app#readme
-      - name: Create and expose postgres
-        id: deploy-and-expose-postgres
-        uses: redhat-actions/oc-new-app@v1
-        with:
-          app_name: ${{ env.POSTGRES_APP_NAME }}
-          image: ${{ env.POSTGRES_REGISTRY_PATH }}
-          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
-          port: ${{ env.POSTGRES_APP_PORT }}
           registry_hostname: ghcr.io
           registry_username: ${{ env.IMAGE_REGISTRY_USER }}
           registry_password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
