@@ -4,7 +4,7 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com',
+    '*',
 ]
 
 # Application definition
@@ -19,7 +19,7 @@ MIDDLEWARE += [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-     'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com',
+     '*',
 ]
 
 # DATABASES
