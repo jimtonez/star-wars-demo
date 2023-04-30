@@ -168,10 +168,10 @@ jobs:
           registry_username: ${{ env.IMAGE_REGISTRY_USER }}
           registry_password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
 
-      - name: Add secure route
-        run: |
-          oc delete route ${{ env.APP_NAME }}
-          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }}
+      # - name: Add secure route
+      #   run: |
+      #     oc delete route ${{ env.APP_NAME }}
+      #     oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }}
 
       - name: Print application URL
         env:
