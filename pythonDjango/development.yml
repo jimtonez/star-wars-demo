@@ -9,7 +9,7 @@ services:
   django:
     build:
       context: .
-      dockerfile: ./compose/local/django/Containerfile
+      dockerfile: ./compose/development/django/Containerfile
     image: starwars_local_django
     container_name: starwars_local_django
     depends_on:

@@ -62,3 +62,4 @@ USER django
 COPY . ${APP_HOME}
 
 ENTRYPOINT ["/entrypoint"]
+CMD ["/start"]
