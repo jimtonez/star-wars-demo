@@ -161,7 +161,7 @@ jobs:
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
       # https://github.com/redhat-actions/oc-new-app#readme
       - name: Create and expose django
-        id: deploy-and-expose
+        id: deploy-and-expose-django
         uses: redhat-actions/oc-new-app@v1
         with:
           app_name: ${{ env.DJANGO_APP_NAME }}
@@ -180,7 +180,7 @@ jobs:
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
       # https://github.com/redhat-actions/oc-new-app#readme
       - name: Create and expose postgres
-        id: deploy-and-expose
+        id: deploy-and-expose-postgres
         uses: redhat-actions/oc-new-app@v1
         with:
           app_name: ${{ env.POSTGRES_APP_NAME }}
