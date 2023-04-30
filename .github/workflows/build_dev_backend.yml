@@ -152,8 +152,8 @@ jobs:
           registry: ${{ env.RH_REGISTRY_URL }}
 
       # https://github.com/redhat-actions/buildah-build#readme
-      - name: Build from Dockerfile
-        id: build-image
+      - name: Build Django from Dockerfile
+        id: build-django-image
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{ env.APP_NAME }}
@@ -166,12 +166,40 @@ jobs:
             ./pythonDjango/compose/development/django/Containerfile
 
       # https://github.com/redhat-actions/push-to-registry#readme
-      - name: Push to registry
-        id: push-image
+      - name: Push Django to registry
+        id: push-django-image
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
+          image: ${{ steps.build-django-image.outputs.image }}
+          tags: ${{ steps.build-django-image.outputs.tags }}
+          registry: ${{ env.IMAGE_REGISTRY }}
+          username: ${{ env.IMAGE_REGISTRY_USER }}
+          password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
+
+      # https://github.com/redhat-actions/buildah-build#readme
+      - name: Build Postgres from Dockerfile
+        id: build-postgres-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          base-image: docker.io/library/postgres:14
+          image: star-wars-demo-postgres
+          tags: ${{ env.IMAGE_TAGS }}
+          content: |
+           ./maintenance
+          envs: |
+            POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}
+            POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}
+            POSTGRES_DB=${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+
+      # https://github.com/redhat-actions/push-to-registry#readme
+      - name: Push Postgres to registry
+        id: push-postgres-image
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-postgres-image.outputs.image }}
+          tags: ${{ steps.build-postgres-image.outputs.tags }}
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ env.IMAGE_REGISTRY_USER }}
           password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
