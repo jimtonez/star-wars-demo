@@ -59,7 +59,7 @@ RUN chown django:django ${APP_HOME}
 USER django
 
 # copy application code to WORKDIR
-COPY . ${APP_HOME}
+COPY ./pythonDjango ${APP_HOME}
 
 ENTRYPOINT ["/entrypoint"]
 CMD ["/start"]
