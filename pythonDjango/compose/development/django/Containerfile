@@ -11,7 +11,7 @@ ARG BUILD_ENVIRONMENT=development
 
 RUN ls -al
 
-COPY ./pythonDjango/requirements.txt .
+COPY ./requirements.txt .
 
 RUN /opt/app-root/bin/python3.9 -m pip install --upgrade pip
 
