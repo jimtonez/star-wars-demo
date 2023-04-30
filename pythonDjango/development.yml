@@ -1,0 +1,35 @@
+version: '3'
+
+volumes:
+  starwars_local_postgres_data: {}
+  starwars_local_postgres_data_backups: {}
+  starwars_local_django: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Containerfile
+    image: starwars_local_django
+    container_name: starwars_local_django
+    depends_on:
+      - postgres
+    volumes:
+      - starwars_local_django:/app:z
+    env_file:
+      - .env.local
+    ports:
+      - '8000:8000'
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Containerfile
+    image: starwars_production_postgres
+    container_name: starwars_local_postgres
+    volumes:
+      - starwars_local_postgres_data:/var/lib/postgresql/data
+      - starwars_local_postgres_data_backups:/backups
+    env_file:
+      - .env.local

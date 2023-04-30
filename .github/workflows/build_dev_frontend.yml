@@ -24,7 +24,7 @@
 
 # 👋 Visit our GitHub organization at https://github.com/redhat-actions/ to see our actions and provide feedback.
 
-name: OpenShift
+name: build-dev-frontend
 
 env:
   # 🖊️ EDIT your repository secrets to log into your OpenShift cluster and set up the context.
@@ -33,12 +33,12 @@ env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
-  OPENSHIFT_NAMESPACE: "star-wars-demo"
-  OPENSHIFT_CLUSTER: "cluster-ndwfp.ndwfp.sandbox844.opentlc.com"
+  OPENSHIFT_NAMESPACE: "star-wars-demo-dev"
+  OPENSHIFT_CLUSTER: "cluster-djdqh.djdqh.sandbox1757.opentlc.com"
 
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
-  APP_NAME: "star-wars-demo-dev"
-  REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-dev:latest"
+  APP_NAME: "star-wars-demo-frontend"
+  REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-frontend:latest"
 
   # 🖊️ EDIT with the port your application should be accessible on.
   # If the container image exposes *exactly one* port, this can be left blank.
@@ -61,13 +61,14 @@ env:
 
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-  push:
+  pull_request:
     # Edit to the branch(es) you want to build and deploy on each push.
-    branches: ["dev"]
+    branches:
+      - dev
 
 jobs:
-  openshift-ci-cd:
-    name: Build and deploy to OpenShift
+  build:
+    name: Build Frontend
     # ubuntu-20.04 can also be used.
     runs-on: ubuntu-20.04
     environment: development
@@ -172,62 +173,3 @@ jobs:
           registry: ${{ env.IMAGE_REGISTRY }}
           username: ${{ env.IMAGE_REGISTRY_USER }}
           password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
-
-      # The path the image was pushed to is now stored in ${{ steps.push-image.outputs.registry-path }}
-
-      - name: Install oc
-        uses: redhat-actions/openshift-tools-installer@v1
-        with:
-          oc: 4
-
-      # https://github.com/redhat-actions/oc-login#readme
-      - name: Log in to OpenShift
-        uses: redhat-actions/oc-login@v1
-        with:
-          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
-          openshift_token: ${{ env.OPENSHIFT_TOKEN }}
-          insecure_skip_tls_verify: true
-          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
-
-      - name: Get namespace
-        id: get-namespace
-        continue-on-error: true
-        run: |
-          oc get namespace ${{ env.OPENSHIFT_NAMESPACE }}
-
-      - name: Create namespace
-        run: |
-          oc create namespace ${{ env.OPENSHIFT_NAMESPACE }}
-        if: steps.get-namespace.outcome != 'success'
-
-      # This step should create a deployment, service, and route to run your app and expose it to the internet.
-      # https://github.com/redhat-actions/oc-new-app#readme
-      - name: Create and expose app
-        id: deploy-and-expose
-        uses: redhat-actions/oc-new-app@v1
-        with:
-          app_name: ${{ env.APP_NAME }}
-          image: ${{ env.REGISTRY_PATH }}
-          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
-          port: ${{ env.APP_PORT }}
-          registry_hostname: ghcr.io
-          registry_username: ${{ env.IMAGE_REGISTRY_USER }}
-          registry_password: ${{ env.IMAGE_REGISTRY_PASSWORD }}
-
-      - name: Add secure route
-        run: |
-          oc delete route ${{ env.APP_NAME }}
-          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }}
-
-      - name: Print application URL
-        env:
-          ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
-          SELECTOR: ${{ steps.deploy-and-expose.outputs.selector }}
-        run: |
-          [[ -n ${{ env.ROUTE }} ]] || (echo "Determining application route failed in previous step"; exit 1)
-          echo
-          echo "======================== Your application is available at: ========================"
-          echo ${{ env.ROUTE }}
-          echo "==================================================================================="
-          echo
-          echo "Your app can be taken down with: \"oc delete all --selector='${{ env.SELECTOR }}'\""

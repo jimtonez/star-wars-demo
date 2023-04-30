@@ -19,14 +19,14 @@ const Header = ( navbar: Navbar) => {
     }
 
     return (
-        <div className={`flex bg-inherit items-center justify-between h-22 w-screen max-w-7xl mx-1 sticky top-0 z-10`}>
+        <div className={`flex bg-inherit items-center justify-between h-22 w-full max-w-7xl sticky top-0 z-30`}>
             <div className="flex p-2 xl:py-4 xl:px-0">
                 <button onClick={handleProducts} className={`${navbar.navbarOpen ? 'hidden' : 'flex'} items-center justify-center w-24 h-14 rounded-full hover:bg-zinc-900 bg-zinc-900/30 shadow-lg shadow-black cursor-pointer`}>
                     <Image priority alt="" src={redhat} height={40} width={40}  />
                 </button>
             </div>
             <div className="flex p-2 xl:py-4 xl:px-0">
-                <button className={`flex items-center justify-center w-14 h-14 rounded-full ${navbar.navbarOpen ? 'border border-gray-700' : ''} hover:bg-zinc-900 bg-zinc-900/30 shadow-lg shadow-black cursor-pointer`} onClick={handleNavbar}>
+                <button className={`flex z-50 items-center justify-center w-14 h-14 rounded-full ${navbar.navbarOpen ? 'border border-gray-700' : ''} hover:bg-zinc-900 bg-zinc-900/30 shadow-lg shadow-black cursor-pointer`} onClick={handleNavbar}>
                         <span className={`absolute h-0.5 w-6 transform transition duration-300 ease-in-out ${navbar.navbarOpen ? 'rotate-45 delay-100 bg-teal-400' : '-translate-y-1.5 bg-yellow-600'}`}></span>
                         <span className={`absolute h-0.5 bg-yellow-600 transform transition-all duration-200 ease-in-out ${navbar.navbarOpen ? 'w-0 opacity-50' : 'w-6 delay-100 opacity-100'}`}></span>
                         <span className={`absolute h-0.5 w-6 transform transition duration-300 ease-in-out ${navbar.navbarOpen ? '-rotate-45 delay-100 bg-teal-400' : 'translate-y-1.5 bg-yellow-600'}`}></span>

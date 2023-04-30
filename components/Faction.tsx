@@ -30,7 +30,7 @@ const Faction = ( faction: Faction ) => {
     return (
         <>
         <div onClick={() => handleSelect(faction.alias)}>
-        <div key={faction.id} ref={hoverRef as React.RefObject<HTMLDivElement>} className={`flex-col relative border ${!isHovered ? 'border-yellow-600 bg-inherit' : 'border-gray-700 backdrop-blur-sm bg-gray-800/20 scale-[102%]'} rounded-xl cursor-pointer shadow-b shadow-sm ease-in-out duration-300`}>
+        <div key={faction.id} ref={hoverRef as React.RefObject<HTMLDivElement>} className={`flex-col relative border ${!isHovered ? 'border-yellow-600 bg-inherit' : 'border-gray-700 bg-gray-800/20 scale-[102%]'} rounded-xl cursor-pointer shadow-lg shadow-black ease-in-out duration-300`}>
             <div className={`flex w-full h-20 lg:h-24 items-center justify-center rounded-t-xl border-b ${!isHovered ? 'border-yellow-600 bg-zinc-900' : 'bg-zinc-900 border-gray-700'} ease-in-out duration-300`}>
                 <p className='text-white text-2xl sm:text-3xl md:text-2xl lg:text-4xl'>{faction.name}</p>
                 <div className={`${isHovered ? 'flex' : 'hidden'} absolute items-center justify-center right-4 h-14 w-14 lg:h-16 lg:w-16 rounded-2xl border-2 border-green-400 text-green-400 hover:scale-[101%] hover:border-green-300 hover:text-green-300 ease-in-out duration-300`}>

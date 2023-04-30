@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil"
 import Factions from "./Factions"
 import Characters from "./Characters"
 import { formState } from '@/atoms/formAtom'
-import Colors from './Colors'
+import Submit from './Submit'
 import Ships from './Ships'
 
 function Stepper () {
@@ -23,6 +23,10 @@ function Stepper () {
         } else if (currentStep === "Ships"){
             return (
                 <Ships />
+            )
+        } else if (currentStep === "Submit"){
+            return (
+                <Submit />
             )
         }
     }

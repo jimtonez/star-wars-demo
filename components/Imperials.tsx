@@ -87,7 +87,7 @@ const imperials = [
 export default function Imperials() {
 
   return (
-    <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
+    <section className="grid grid-cols-3 md:grid-cols-4 grid-rows-3 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
           <>
           {imperials.map((imperial, i) => (
             <Character key={i} index={i} id={imperial.id} name={imperial.name} image={imperial.image} path={''} disabled={imperial.disabled} />

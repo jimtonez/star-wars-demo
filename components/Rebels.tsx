@@ -92,7 +92,7 @@ const rebels = [
 export default function Rebels() {
 
   return (
-    <section className="grid grid-cols-3 grid-rows-4 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
+    <section className="grid grid-cols-3 md:grid-cols-4 grid-rows-3 max-w-7xl p-2 gap-2 sm:p-4 sm:gap-4">
           <>
           {rebels.map((rebel, i) => (
             <Character key={i} index={i} id={rebel.id} name={rebel.name} image={rebel.image} path={''} disabled={rebel.disabled} />

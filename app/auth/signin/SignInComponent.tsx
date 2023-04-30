@@ -33,7 +33,7 @@ function SignInComponent({ providers }: Props) {
         </div>
         <div className="mt-12 grid grid-cols-1 space-y-4 mb-12">
           {Object.values(providers!).map((provider) => (
-            <button key={provider.id} className="py-3 px-6 w-full bg-inherit border border-yellow-600 hover:border-gray-700 hover:bg-zinc-900/30 shadow-lg shadow-black rounded-lg" onClick={() => signIn(provider.id, { callbackUrl: "/dashboard"})}>
+            <button key={provider.id} className="py-3 px-6 w-full bg-inherit border border-yellow-600 hover:border-gray-700 hover:bg-zinc-900/30 shadow-lg shadow-black rounded-lg" onClick={() => signIn(provider.id, { callbackUrl: "/profile"})}>
               <div className="flex w-full items-center justify-center space-x-4">
                 <div className="flex w-1/4 items-center justify-center">
                   {renderIcon(provider.name)}
