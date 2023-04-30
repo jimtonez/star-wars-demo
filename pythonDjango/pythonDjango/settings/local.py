@@ -1,13 +1,9 @@
 from .base import *
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tlf&qsr7c(4(70l7x6a(h1emgh-p=(c+cirfh0o&(@!js^!x41'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 INSTALLED_APPS += [
