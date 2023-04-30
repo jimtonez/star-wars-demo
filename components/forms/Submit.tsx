@@ -35,7 +35,7 @@ export default function Submit () {
             color: selectedColor
         }
         e.preventDefault()
-        const response = await fetch('http://localhost:8000/api/users/', {
+        const response = await fetch(`http://star-wars-demo-backend-star-wars-demo-dev.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com/api/users/`, {
             method: 'POST',
             body: JSON.stringify(newUser),
             headers: {
