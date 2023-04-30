@@ -48,7 +48,7 @@ COPY ./start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
-COPY .env.local ./.env.local
+COPY .env.local ${APP_HOME}
 
 # copy application code to WORKDIR
 COPY --chown=django:django . ${APP_HOME}
