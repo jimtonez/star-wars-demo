@@ -37,8 +37,8 @@ env:
   OPENSHIFT_CLUSTER: "cluster-djdqh.djdqh.sandbox1757.opentlc.com"
 
   # 🖊️ EDIT to set a name for your OpenShift app, or a default one will be generated below.
-  APP_NAME: "star-wars-demo"
-  REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-dev:latest"
+  APP_NAME: "star-wars-demo-frontend"
+  REGISTRY_PATH: "ghcr.io/jimtonez/star-wars-demo-frontend:latest"
 
   # 🖊️ EDIT with the port your application should be accessible on.
   # If the container image exposes *exactly one* port, this can be left blank.

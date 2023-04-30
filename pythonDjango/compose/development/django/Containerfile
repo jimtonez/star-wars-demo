@@ -8,7 +8,10 @@ FROM python as python-build-stage
 ARG BUILD_ENVIRONMENT=development
 
 # Requirements are installed here to ensure they will be cached.
-COPY ./requirements.txt .
+
+RUN ls -al
+
+COPY ./pythonDjango/requirements.txt .
 
 RUN /opt/app-root/bin/python3.9 -m pip install --upgrade pip
 
