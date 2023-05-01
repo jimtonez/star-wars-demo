@@ -4,7 +4,8 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '*',
+    'https://console-openshift-console.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com',
+    '.opentlc.com'
 ]
 
 # Application definition
@@ -19,7 +20,7 @@ MIDDLEWARE += [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-     '*',
+     'https://console-openshift-console.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com',
 ]
 
 # DATABASES
