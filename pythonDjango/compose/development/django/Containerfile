@@ -54,7 +54,10 @@ RUN chmod +x /start
 
 # copy application code to WORKDIR
 COPY --chown=django:django ./pythonDjango ${APP_HOME}
+RUN chmod -R 755 ${APP_HOME}/pythonDjango/migrations
 RUN chmod +x ${APP_HOME}/manage.py
+RUN ls -al ${APP_HOME}
+RUN ls -al ${APP_HOME}/pythonDjango 
 COPY .env.local ${APP_HOME}
 
 # make django owner of the WORKDIR directory as well.
