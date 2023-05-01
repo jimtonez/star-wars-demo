@@ -49,6 +49,8 @@ RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
 COPY .env.local ${APP_HOME}
+COPY ./pythonDjango ${APP_HOME}
+RUN chmod +x ${APP_HOME}/manage.py
 
 # copy application code to WORKDIR
 COPY --chown=django:django . ${APP_HOME}
@@ -59,8 +61,6 @@ RUN chown django:django ${APP_HOME}
 USER django
 
 # copy application code to WORKDIR
-COPY ./pythonDjango ${APP_HOME}
-RUN chmod +x ${APP_HOME}/manage.py
 
 ENTRYPOINT ["/entrypoint"]
 CMD ["/start"]
