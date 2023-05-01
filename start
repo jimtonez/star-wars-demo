@@ -4,9 +4,8 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-set -o allexport; source /app/.env.local; set +o allexport
-echo "Starting Django REST API..."
-ls -al
+set -o allexport; source .env.local; set +o allexport
+echo $POSTGRES_HOST
 
 python /app/manage.py collectstatic --settings=pythonDjango.settings.development --noinput
 
