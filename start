@@ -5,6 +5,8 @@ set -o pipefail
 set -o nounset
 
 set -o allexport; source /app/.env.local; set +o allexport
+echo "Starting Django REST API..."
+ls -al
 
 python /app/manage.py collectstatic --settings=pythonDjango.settings.development --noinput
 
