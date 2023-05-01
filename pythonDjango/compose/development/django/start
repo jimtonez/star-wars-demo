@@ -6,6 +6,9 @@ set -o nounset
 
 set -o allexport; source .env.local; set +o allexport
 
-python /app/manage.py collectstatic --noinput
-
-exec /usr/local/bin/gunicorn config.wsgi --bind 0.0.0.0:5000 --chdir=/app
+# python /app/manage.py collectstatic --settings=pythonDjango.settings.development --noinput
+python /app/manage.py makemigrations pythonDjango --settings=pythonDjango.settings.development
+python /app/manage.py migrate --settings=pythonDjango.settings.development
+python /app/manage.py createsuperuser --settings=pythonDjango.settings.development --email "timjones@redhat.com" --username "svcdjango" --noinput
+python /app/manage.py runserver --settings=pythonDjango.settings.development 0.0.0.0:5000
+# gunicorn pythonDjango.wsgi --bind 0.0.0.0:5000 --chdir=/app
