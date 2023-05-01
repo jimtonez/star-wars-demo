@@ -16,12 +16,12 @@ import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env.read_env('.env.local')
+env = environ.Env()
 
-# READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
-# if READ_DOT_ENV_FILE:
-#     # OS environment variables take precedence over variables from .env
-#     env.read_env(str(BASE_DIR / ".env.local"))
+READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
+if READ_DOT_ENV_FILE:
+    # OS environment variables take precedence over variables from .env
+    env.read_env(str(BASE_DIR / ".env.local"))
 
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -42,7 +42,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 # Quick-start development settings - unsuitable for production
