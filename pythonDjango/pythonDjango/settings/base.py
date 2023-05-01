@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,7 +24,7 @@ env = environ.Env()
     # OS environment variables take precedence over variables from .env
 env.read_env(str("/app/.env.local"))
 
-SECRET_KEY = env("DJANGO_SECRET_KEY")
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # Appplication Definitions
 INSTALLED_APPS = [
