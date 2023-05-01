@@ -72,9 +72,15 @@ USE_TZ = True
 
 # STATIC_URL = 'static/'
 # All settings common to all environments
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+REST_FRAMEWORK = {       
+    'DEFAULT_RENDERER_CLASSES': (       
+        'rest_framework.renderers.JSONRenderer',       
+    )       
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
