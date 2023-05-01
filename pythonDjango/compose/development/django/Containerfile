@@ -60,6 +60,7 @@ USER django
 
 # copy application code to WORKDIR
 COPY ./pythonDjango ${APP_HOME}
+RUN chmod +x ${APP_HOME}/manage.py
 
 ENTRYPOINT ["/entrypoint"]
 CMD ["/start"]
