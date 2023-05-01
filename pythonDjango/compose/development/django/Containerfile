@@ -10,7 +10,7 @@ ARG BUILD_ENVIRONMENT=development
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements.txt .
 
-# RUN /opt/app-root/bin/python3.9 -m pip install --upgrade pip
+RUN /opt/app-root/bin/python3.9 -m pip install --upgrade pip
 
 # Create Python Dependency and Sub-Dependency Wheels.
 RUN mv requirements.txt ${BUILD_ENVIRONMENT}.txt
