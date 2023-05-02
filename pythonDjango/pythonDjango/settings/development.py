@@ -4,7 +4,7 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'https://console-openshift-console.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com',
+    'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-fs7bx.fs7bx.sandbox2216.opentlc.com',
     '.opentlc.com'
 ]
 
@@ -13,6 +13,7 @@ INSTALLED_APPS += [
     'pythonDjango',
     'corsheaders',
     'rest_framework',
+    "rest_framework_api_key"
 ]
 
 MIDDLEWARE += [
@@ -20,7 +21,7 @@ MIDDLEWARE += [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-     'https://console-openshift-console.apps.cluster-djdqh.djdqh.sandbox1757.opentlc.com',
+     'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-fs7bx.fs7bx.sandbox2216.opentlc.com',
 ]
 
 # DATABASES
@@ -80,8 +81,13 @@ USE_TZ = True
 REST_FRAMEWORK = {       
     'DEFAULT_RENDERER_CLASSES': (       
         'rest_framework.renderers.JSONRenderer',       
-    )       
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework_api_key.permissions.HasAPIKey",
+    ) 
 }
+
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
