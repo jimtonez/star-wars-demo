@@ -161,16 +161,10 @@ jobs:
           oc create namespace ${{ env.OPENSHIFT_NAMESPACE }}
         if: steps.get-namespace.outcome != 'success'
 
-      # - name: Get postgres service
-      #   id: get-postgres-service
-      #   run: |
-      #     oc get service postgres
-
-      # - name: Get postgres service
-      #   id: get-postgres-service
-      #   run: |
-      #     oc new-app postgres POSTGRES_DB=${{ env.POSTGRES_DB }} POSTGRES_PORT=${{ env.POSTGRES_PORT }} POSTGRES_HOST=${{ env.POSTGRES_HOST }} POSTGRES_USER=${{ env.POSTGRES_USER }} POSTGRES_PASSWORD=${{ env.POSTGRES_PASSWORD }}
-      #   if: steps.get-postgres-service.outcome != 'success'
+      - name: Add secure route
+        run: |
+          oc delete route ${{ env.APP_NAME }}
+          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }}
 
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
       # https://github.com/redhat-actions/oc-new-app#readme
