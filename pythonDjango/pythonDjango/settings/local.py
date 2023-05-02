@@ -10,6 +10,7 @@ INSTALLED_APPS += [
     'pythonDjango',
     'corsheaders',
     'rest_framework',
+    "rest_framework_api_key"
 ]
 
 MIDDLEWARE += [
@@ -62,6 +63,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+REST_FRAMEWORK = {       
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework_api_key.permissions.HasAPIKey",
+    ) 
+}
+
+API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
