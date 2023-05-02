@@ -162,13 +162,14 @@ jobs:
         if: steps.get-namespace.outcome != 'success'
 
       - name: Get route
+        id: get-route
         run: |
           oc get route ${{ env.DJANGO_APP_NAME }}
 
       - name: Add secure route
         run: |
           oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }} --port 5000
-        if: steps.get-namespace.outcome != 'success'
+        if: steps.get-route.outcome != 'success'
         
 
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
