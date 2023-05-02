@@ -183,11 +183,11 @@ jobs:
 
       - name: Add secure route
         run: |
-          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }} --port 5000
+          oc create route edge --service=${{ env.DJANGO_APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }} --port 5000
         if: steps.get-route.outcome != 'success'
 
       - name: Add secure route
         run: |
           oc delete route ${{ env.APP_NAME }}
-          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }} --port 5000
+          oc create route edge --service=${{ env.DJANGO_APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }} --port 5000
         if: steps.get-route.outcome == 'success'
