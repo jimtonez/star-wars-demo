@@ -161,10 +161,10 @@ jobs:
           oc create namespace ${{ env.OPENSHIFT_NAMESPACE }}
         if: steps.get-namespace.outcome != 'success'
 
-      - name: Get postgres service
-        id: get-postgres-service
-        run: |
-          oc get service postgres
+      # - name: Get postgres service
+      #   id: get-postgres-service
+      #   run: |
+      #     oc get service postgres
 
       # - name: Get postgres service
       #   id: get-postgres-service
