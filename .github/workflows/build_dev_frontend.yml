@@ -141,6 +141,7 @@ jobs:
           envkey_NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
           envkey_DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
           envkey_DJANGO_API_URL: ${{ secrets.DJANGO_API_URL }}
+          envkey_DJANGO_API_KEY: ${{ secrets.DJANGO_API_KEY }}
           directory: .
           file_name: .env.local
 
