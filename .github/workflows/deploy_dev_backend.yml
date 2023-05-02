@@ -164,7 +164,7 @@ jobs:
       - name: Add secure route
         run: |
           oc delete route ${{ env.DJANGO_APP_NAME }}
-          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }}
+          oc create route edge --service=${{ env.APP_NAME }} --hostname=${{ env.DJANGO_APP_NAME }}-${{ env.OPENSHIFT_NAMESPACE }}.apps.${{ env.OPENSHIFT_CLUSTER }} --port 5000
 
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
       # https://github.com/redhat-actions/oc-new-app#readme
