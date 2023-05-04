@@ -10,6 +10,14 @@ async function getUser (req, res) {
             } else {
                 res.status(404).json({})
             }
+        case "GET":
+            const getAll = await axios.get(`${process.env.DJANGO_API_URL}/api/users`, {headers: { 'X-Api-Key': `${process.env.DJANGO_API_KEY}`}});
+            const users = getAll.data
+            if (users) {
+                res.status(200).json(users)
+            } else {
+                res.status(404).json({})
+            }
     }
 }
 export default getUser

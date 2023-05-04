@@ -26,12 +26,13 @@ import ProfileMenu from "./ProfileMenu"
 interface Profile {
     username: string,
     name: string,
+    email: string,
     image: string,
     shipImage: string,
     color: string,
 }
 
-const UserProfile = ( profile: Profile ) => {
+const FeedProfile = ( profile: Profile ) => {
 
     const renderImage = () => {
         if (profile.name === "Chewbacca") {
@@ -119,8 +120,9 @@ const UserProfile = ( profile: Profile ) => {
 
     return (
         <>
-        <div className={`flex flex-col z-40 sticky top-20 md:top-4 w-full max-w-5xl ease-in-out duration-300 items-start justify-center z-20 rounded-full border border-gray-700 backdrop-blur-sm bg-gray-800/30 shadow-lg shadow-black p-2`}>
-            <div className="flex w-full flex-row items-center justify-between">
+        <div className={`flex flex-col w-full max-w-5xl ease-in-out duration-300 items-start justify-center z-20 rounded-full border border-gray-700 backdrop-blur-sm bg-gray-800/30 shadow-lg shadow-black p-2`}>
+            <div className="flex w-full flex-row items-center space-x-4">
+                <div className="flex space-x-2">
                 <div className={`col-span-1 z-20 border border-yellow-600 backdrop-blur-sm bg-gray-800/20 rounded-full cursor-pointer ease-in-out duration-300`}>
                     <div className="flex relative flex-col items-center justify-center ease-in-out duration-300">
                         <div className='flex h-20 w-20 md:h-24 md:w-24 items-center justify-center'>
@@ -130,17 +132,17 @@ const UserProfile = ( profile: Profile ) => {
                         </div>
                     </div>
                 </div>
-                <div className="hidden md:flex w-auto max-w-[200px] h-auto z-10">
-                    <p className="text-white text-3xl font-mono">{profile.name}</p>
-                </div>
-                <div className="flex w-auto h-auto z-10">
-                    <ProfileMenu />
-                </div>
-                <div className="hidden md:flex w-auto max-w-[200px] h-auto z-10">
-                    <p className="text-white text-3xl font-mono">{profile.name}</p>
-                </div>
                 <div className="flex w-auto h-auto z-10">
                     <ShipDisplay image={profile.shipImage} name={profile.name} path="" />
+                </div>
+                </div>
+                <div className="flex items-start justify-center jusitfy-around space-x-8">
+                    <div className="hidden md:flex">
+                        <p className="text-white text-3xl font-mono">{profile.username}</p>
+                    </div>
+                    <div className="hidden md:flex">
+                        <p className="text-white text-3xl font-mono">{profile.email}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,4 +151,4 @@ const UserProfile = ( profile: Profile ) => {
     )
 }
 
-export default UserProfile
+export default FeedProfile

@@ -40,7 +40,9 @@ const Menu = ( navbar: Navbar) => {
     const handleClick = (i: number) => {
         if( i === 3) {
             signOut({ callbackUrl: "/"})
-        } else {
+        } else if (i === 2) {
+            router.push('/dashboard')
+        } else if (i === 1) {
             router.push('/profile')
         }
     }
