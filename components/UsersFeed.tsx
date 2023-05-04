@@ -35,7 +35,7 @@ export default function UsersFeed () {
         <>
         <div className="flex flex-col items-center justify-start w-full h-full overflow-y-scroll scrollbar-hide space-y-4">
             {appUsers.map((user, i) => (
-                <FeedProfile username={user.user_name} name={user.character_name} email={user.user_email} image={user.image} shipImage={user.ship_url} color={user.color} />
+                <FeedProfile key={i} username={user.user_name} name={user.character_name} email={user.user_email} image={user.image} shipImage={user.ship_url} color={user.color} />
             ))}
         </div>
         </>
