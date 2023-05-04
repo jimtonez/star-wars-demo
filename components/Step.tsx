@@ -19,18 +19,13 @@ export default function Step ( step: Step) {
 
     const [hoverRef, isHovered] = useHover(false);
     const [currentStep, setCurrentStep] = useRecoilState(instructionState)
-    const [currentProgress, setCurrentProgress] = useRecoilState(progressState)
 
     const handleComplete = (index : number) => {
         setCurrentStep(index + 1)
-        setCurrentProgress(currentProgress + 10)
     }
 
     const handleRestart = (index : number) => {
-        let i = (index + 1)
         setCurrentStep(index)
-        setCurrentProgress(i * 10)
-        
     }
 
     return (
@@ -38,7 +33,7 @@ export default function Step ( step: Step) {
                 <div className={`flex w-full h-20 items-center justify-center ${isHovered || currentStep > step.index ? 'border-gray-700 bg-zinc-900' : 'bg-zinc-900 border-yellow-600'} ${currentStep > step.index ? 'border-none rounded-xl' : 'border-b rounded-t-xl'} ease-in-out duration-300`}>
                     <p className='text-white text-2xl sm:text-3xl md:text-2xl lg:text-4xl font-mono'>{step.name}</p>
                     {currentStep > step.index ? (
-                        <div onClick={(i) => handleRestart(step.index)} className={`flex absolute items-center justify-center right-16 md:right-20 h-10 w-10 lg:h-12 lg:w-12 rounded-2xl lg:border-2 ${currentStep > step.index ? 'border-orange-400 text-orange-400' : 'border-gray-700 text-gray-700'} hover:scale-[101%] ease-in-out duration-300`}>
+                        <div onClick={() => handleRestart(step.index)} className={`flex absolute items-center justify-center right-16 md:right-20 h-10 w-10 lg:h-12 lg:w-12 rounded-2xl lg:border-2 ${currentStep > step.index ? 'border-orange-400 text-orange-400' : 'border-gray-700 text-gray-700'} hover:scale-[101%] ease-in-out duration-300`}>
                             <ArrowPathIcon className="h-9 w-9" />
                         </div>
                     ) : (

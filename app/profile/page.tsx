@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
    
-    <main className="flex min-h-screen flex-col items-center justify-between space-y-4 h-screen">
+    <main className="flex min-h-screen flex-col items-center justify-between space-y-4 h-full">
       <Header navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} productsOpen={productsOpen} setProductsOpen={setProductsOpen} />
       <Menu navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
       <RedHat productsOpen={productsOpen} setProductsOpen={setProductsOpen} />
