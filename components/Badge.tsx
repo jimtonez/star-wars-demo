@@ -27,7 +27,7 @@ export default function Badge ( badge: Badge) {
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-full h-auto">
-                    <div className="flex flex-col items-center justify-center w-[400px] sm:w-[500px] h-[273px] space-y-4">
+                    <div className="flex flex-col items-center justify-center w-[300px] sm:w-[500px] h-[273px] space-y-4">
                         <p className="w-auto md:w-auto text-lg md:text-2xl text-white font-mono truncate">{badge.description}</p>
                         <span className="text-8xl">{badge.icon}</span>
                     </div>

@@ -55,10 +55,22 @@ export default function Step ( step: Step) {
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-center w-auto h-auto">
-                    <div className={`flex ${currentStep > step.index ? 'hidden' : 'flex'} flex-col w-full h-auto items-start justify-center space-y-2 p-2 md:p-4`}>
+                    <div className={`flex ${currentStep > step.index ? 'hidden' : 'flex'} flex-col w-full h-auto items-start justify-center space-y-2 md:space-y-8 p-2 md:p-4`}>
+                        <>
                         {step.tasks.map((task, i) => (
+                            <>
                             <p key={i} className="text-white text-lg md:text-xl font-mono">{step.index + 1}.{i + 1}: {task.text}</p>
+                                {task.code ? (
+                                    <div className="flex items-center pl-10 md:pl-20 h-14 w-full rounded-xl bg-zinc-900">
+                                        <p className="text-orange-500 font-mono text-lg">{task.code}</p>
+                                    </div>
+                                ) : (
+                                    <>
+                                    </>
+                                )}
+                            </>
                         ))}
+                        </>
                     </div>
                     <div className={`flex flex-col w-full h-auto items-end justify-center ${currentStep > step.index ? 'p-0' : 'p-4'}`}>
                         {currentStep > step.index ? (
