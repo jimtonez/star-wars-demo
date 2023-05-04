@@ -44,7 +44,7 @@ export default function Endor () {
     return (
         <>
             <RecoilRoot>
-                <div className="flex flex-col items-center justify-between w-full h-auto scrollbar-hide">
+                <div className="flex flex-col items-center justify-between w-full h-screen overflow-y-scroll scrollbar-hide">
                     <Header navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} productsOpen={productsOpen} setProductsOpen={setProductsOpen} />
                     <Menu navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
                     <RedHat productsOpen={productsOpen} setProductsOpen={setProductsOpen} />

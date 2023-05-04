@@ -199,7 +199,7 @@ const steps = [
             {
                 id: 3,
                 text: "Return to the console and delete the snapshot file with following command:",
-                code: "rm -rf snapshot.txt"
+                code: "rm -f snapshot.txt"
             },
             {
                 id: 4,
@@ -228,7 +228,7 @@ export default function Instructions () {
 
     return (
         <>
-        <div className="flex flex-col w-full max-w-5xl ease-in-out duration-300 items-center justify-start min-h-screen space-y-4 mt-10 mb-10 p-2">
+        <div className="flex flex-col w-full max-w-5xl ease-in-out duration-300 items-center justify-start space-y-4 mt-10 mb-10 p-2">
             {steps.map((step, i) => (
                 <Step key={i} index={i} name={step.name} enabled={step.enabled} completed={step.completed} tasks={[...step.tasks]} />
             ))}
