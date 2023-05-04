@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil"
 import { instructionState } from "@/atoms/instructionAtom"
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react"
+import { useEffect, useState } from "react"
 
 
 interface Profile {
@@ -19,8 +20,9 @@ interface Profile {
 const Progress = ( profile: Profile ) => {
 
     const [currentProgress, setCurrentProgress] = useRecoilState(instructionState)
-    const router = useRouter()
     const { data: session } = useSession()
+    const router = useRouter()
+    const [progress, setProgress] = useState('col-span-1')
 
     async function handleComplete (e: any)  {
         const completed = true
@@ -60,6 +62,11 @@ const Progress = ( profile: Profile ) => {
         }
     }
 
+    // useEffect(() => {
+    //     setProgress(`col-span-${currentProgress}`)
+    // },[currentProgress])
+
+
     return (
         <>
         <div className={`flex flex-col z-40 sticky top-20 md:top-4 w-full max-w-screen lg:max-w-5xl ease-in-out duration-300 items-start justify-center z-20 rounded-full border border-gray-700 backdrop-blur-sm bg-gray-800/30 shadow-lg shadow-black p-2`}>
@@ -70,7 +77,7 @@ const Progress = ( profile: Profile ) => {
                         <CheckBadgeIcon className="h-9 w-9" />
                     </button>
                 </div>
-                <div className={`flex items-center justify-end col-span-${currentProgress} w-full h-auto ${currentProgress > 7 ? 'ml-0' : 'ml-4'} sm:ml-0 z-10`}>
+                <div className={`flex items-center justify-end col-span-${currentProgress} w-full h-auto ml-8 sm:ml-0 z-10`}>
                     <ShipDisplay image={profile.shipImage} name={profile.name} path="" />
                 </div>
             </div>

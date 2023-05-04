@@ -1,6 +1,6 @@
 import axios from "axios";
 
-async function createUser (req, res) {
+async function updateUser (req, res) {
     switch (req.method) {
         case "POST":
             const check = JSON.parse(req.body)
@@ -9,4 +9,4 @@ async function createUser (req, res) {
             res.status(200).json(user)
     }
 }
-export default createUser
+export default updateUser
