@@ -129,8 +129,8 @@ const UserProfile = ( profile: Profile ) => {
             <div className="flex w-full flex-row items-center justify-between">
                 <div className={`col-span-1 z-20 border border-yellow-600 backdrop-blur-sm bg-gray-800/20 rounded-full cursor-pointer ease-in-out duration-300`}>
                     <div className="flex relative flex-col items-center justify-center ease-in-out duration-300">
-                        <div className='flex h-24 w-24 items-center justify-center'>
-                            <div className={`flex w-20 h-20 items-center justify-center ${profile.color} rounded-full p-4`}>
+                        <div className='flex h-20 w-20 md:h-24 md:w-24 items-center justify-center'>
+                            <div className={`flex w-16 h-16 md:w-20 md:h-20 items-center justify-center ${profile.color} rounded-full p-4`}>
                                 {renderImage()}
                             </div>
                         </div>
