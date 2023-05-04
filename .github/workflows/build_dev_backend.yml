@@ -166,6 +166,8 @@ jobs:
           # Otherwise, point this to your Dockerfile/Containerfile relative to the repository root.
           dockerfiles: |
             ./pythonDjango/compose/development/django/Containerfile
+          extra-args: |
+            --ignorefile=.containerignore
 
       # https://github.com/redhat-actions/push-to-registry#readme
       - name: Push Django to registry
