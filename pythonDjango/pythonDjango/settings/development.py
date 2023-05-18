@@ -4,7 +4,7 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-fs7bx.fs7bx.sandbox2216.opentlc.com',
+    'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-rb4kb.rb4kb.sandbox1498.opentlc.com',
     '.opentlc.com'
 ]
 
@@ -21,7 +21,7 @@ MIDDLEWARE += [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-     'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-fs7bx.fs7bx.sandbox2216.opentlc.com',
+     'https://star-wars-demo-frontend-star-wars-demo-dev.apps.cluster-rb4kb.rb4kb.sandbox1498.opentlc.com',
 ]
 
 # DATABASES
